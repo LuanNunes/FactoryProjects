@@ -1,8 +1,33 @@
 <html>
     <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
         <script type="text/javascript" async="" src="oboe-browser.min.js"></script>
         <script type="text/javascript" async="" src="main.js"></script>
     </head>
     <body>
+        <div class="col-sm-12">
+
+            <div class="col-sm-4">
+                <div class="col-sm-2">
+                    <button id="btn_search" class="btn btn-success" onclick="get()">Search...</button>
+                </div>
+
+                <div class="col-sm-2">
+                    <button id="btn_async" class="btn btn-success" onclick="getAsync()">Search Async...</button>
+                </div>
+            </div>
+            <div class="col-sm-8"></div>
+        </div>
+
+        <div class="col-sm-12">
+
+        </div>
     </body>
 </html>

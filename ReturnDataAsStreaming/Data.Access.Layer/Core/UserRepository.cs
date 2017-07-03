@@ -26,7 +26,7 @@ namespace Data.Access.Layer.Core
                 {
                     cmd.CommandText =
                         "SELECT Id, FirstName, LastName, Email, Gender, Age FROM [fake].[User] where FirstName like @name";
-                    cmd.Parameters.AddWithValue("@name", String.Format("%{0}%", name));
+                    cmd.Parameters.AddWithValue("@name", $"%{name}%");
 
                     connection.Open();
                     var reader = cmd.ExecuteReader();
@@ -44,7 +44,7 @@ namespace Data.Access.Layer.Core
                                 Gender = reader.GetString(4),
                                 Age = reader.GetInt32(5)
                             };
-                            Thread.Sleep(1000);
+//                            Thread.Sleep(1000);
                             yield return user;
                         }
                     }

@@ -48,7 +48,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\FakeIItEasyContext.cs" />
+    <Compile Include="Core\UserDetailsRepository.cs" />
     <Compile Include="Core\UserRepository.cs" />
+    <Compile Include="Mapping\UserDetailMap.cs" />
     <Compile Include="Mapping\UserMap.cs" />
     <Compile Include="Migrations\201707021724510_InitialCreate.cs" />
     <Compile Include="Migrations\201707021724510_InitialCreate.Designer.cs">
@@ -58,8 +60,13 @@
     <Compile Include="Migrations\201707021734235_Initial.Designer.cs">
       <DependentUpon>201707021734235_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707030144128_SecondTable.cs" />
+    <Compile Include="Migrations\201707030144128_SecondTable.Designer.cs">
+      <DependentUpon>201707030144128_SecondTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\User.cs" />
+    <Compile Include="Model\UserDetail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -72,6 +79,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201707021734235_Initial.resx">
       <DependentUpon>201707021734235_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707030144128_SecondTable.resx">
+      <DependentUpon>201707030144128_SecondTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
