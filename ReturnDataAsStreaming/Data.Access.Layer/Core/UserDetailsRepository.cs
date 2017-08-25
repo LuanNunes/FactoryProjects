@@ -10,7 +10,7 @@ namespace Data.Access.Layer.Core
     {
         private readonly FakeIItEasyContext _context;
 
-        private string _connectionString = @"Data Source=.\localhost;Initial Catalog=FakeItEasy;User ID = teste; Password=teste";
+        private string _connectionString = @"Data Source=bddev;Initial Catalog=FakeItEasy;Persist Security Info=True;User ID=usr_neogig;Password=r2kR9HD0XJ5Uyjsy6Xxweh3devo4gzaP8IA79KdixqyP17H";
 
         public UserDetailsRepository()
         {
@@ -53,16 +53,24 @@ namespace Data.Access.Layer.Core
                 using (var cmd = connection.CreateCommand())
                 {
                     cmd.CommandText =
-                        "SELECT user_id,username,first_name,last_name,gender,password,status FROM [fake].[UserDetails] where username like @name";
+                        "SELECT * FROM [fake].[UserDetails] where username like @name";
                     cmd.Parameters.AddWithValue("@name", $"%{name}%");
 
                     connection.Open();
                     var reader = cmd.ExecuteReader();
+                    var schema = reader.GetSchemaTable();
 
                     using (reader)
                     {
                         while (reader.Read())
                         {
+                            var Id = reader.GetInt32(0);
+                            var UserName = reader.GetString(1);
+                            var FirstName = reader.GetString(1);
+                            var LastName = reader.GetString(2);
+                            var Gender = reader.GetString(4);
+
+
                             var user = new UserDetail
                             {
                                 Id = reader.GetInt32(0),
