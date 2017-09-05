@@ -21,7 +21,7 @@ namespace Neocom.Poc.EasyQ.Receiver.Controller
         [HttpGet]
         public async Task<HttpResponseMessage> BuildMessage()
         {
-            _bus.sub
+            //_bus.sub
 
             var result = new StringContent("All is good".SerializeToJsonLowerCase(), Encoding.UTF8, "application/json");
             var response = new HttpResponseMessage

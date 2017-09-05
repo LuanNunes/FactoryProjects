@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  neocom.poc.easyq:
+    image: neocom.poc.easyq
+    build:
+      context: .\Neocom.Poc.EasyQ
+      dockerfile: Dockerfile

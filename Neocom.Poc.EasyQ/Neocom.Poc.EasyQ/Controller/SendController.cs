@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
 using EasyNetQ;
+using EasyNetQ.NonGeneric;
+using EasyNetQ.Topology;
 using Neocom.Poc.EasyQ.App_Start;
 using Neocom.Poc.EasyQ.Model;
 
@@ -15,9 +17,8 @@ namespace Neocom.Poc.EasyQ.Controller
     {
         private readonly IBus _bus;
 
-        public SendController(IBus bus)
+        public SendController()
         {
-            _bus = bus;
         }
 
         [Route("")]
@@ -26,9 +27,21 @@ namespace Neocom.Poc.EasyQ.Controller
         {
             var msg = new Message {Value = "Hello Rabbit!"};
 
-            _bus.Publish(msg);
+            var serviceBus = RabbitHutch.CreateBus("host=localhost;virtualHost=/;username=guest;password=guest");
+            var adBus = RabbitHutch.CreateBus("host=localhost;virtualHost=/;username=guest;password=guest").Advanced;
+            adBus.QueueDeclare("my_queue");
 
-            await _bus.PublishAsync(new Message
+            var properties = new MessageProperties();
+            var body = Encoding.UTF8.GetBytes("Hello World!");
+
+            var myMessage = new EasyNetQ.Message<Neocom.Poc.EasyQ.Model.Message>(msg);
+
+            serviceBus.Publish(Exchange.GetDefault(), "my_queue");
+            
+
+            //serviceBus.Publish(msg);
+
+            await serviceBus.PublishAsync(new Message
             {
                 Value = "Hello Rabbit!"
             }).ContinueWith(task =>
@@ -43,10 +56,6 @@ namespace Neocom.Poc.EasyQ.Controller
                     Console.Out.WriteLine("\n\n");
                 }
             });
-
-
-
-
 
             var result = new StringContent("All is good".SerializeToJsonLowerCase(), Encoding.UTF8, "application/json");
             var response = new HttpResponseMessage
