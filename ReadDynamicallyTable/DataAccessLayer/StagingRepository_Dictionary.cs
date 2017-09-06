@@ -161,7 +161,7 @@ namespace DataAccessLayer
                             " FROM [dbo].[ETL_CONFIGURACAO_PROJETO] P " +
                             " INNER JOIN dbo.[ETL_CONFIGURACAO_ARQUIVO] A ON P.IDPROJETO = A.IDPROJETO" +
                             " INNER JOIN dbo.[ETL_ESTRUTURA_PLANILHA] E ON E.IDARQUIVO = A.IDARQUIVO " +
-                            " WHERE E.NM_COLUNA<> 'LINHA' AND A.IDARQUIVO = @idFile";
+                            " WHERE E.NM_COLUNA<> 'LINHA' AND E.NM_COLUNA_EXT is not null AND A.IDARQUIVO = @idFile";
                         cmd.Parameters.AddWithValue("@idFile", idFile);
 
                         connection.Open();

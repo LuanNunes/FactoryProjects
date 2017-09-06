@@ -3,6 +3,7 @@ using System;
 using System.Net.Http.Formatting;
 using System.Web;
 using System.Web.Http;
+using Neocom.Poc.EasyQ.Receiver.Bus;
 
 namespace Neocom.Poc.EasyQ.Receiver
 {
@@ -14,6 +15,12 @@ namespace Neocom.Poc.EasyQ.Receiver
             GlobalConfiguration.Configuration.Formatters.Clear();
             GlobalConfiguration.Configuration.Formatters.Add(new JsonMediaTypeFormatter());
             GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+            MessageListener.Start();
+        }
+
+        protected void Application_End()
+        {
+            MessageListener.Stop();
         }
     }
 }

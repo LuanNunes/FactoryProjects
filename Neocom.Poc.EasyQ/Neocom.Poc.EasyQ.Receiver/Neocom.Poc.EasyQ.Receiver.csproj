@@ -111,6 +111,10 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Dockerfile" />
+    <None Include=".dockerignore">
+      <DependentUpon>Dockerfile</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -136,7 +140,7 @@
     <Compile Include="MessageHandlers\IMessageHandlerProcessor.cs" />
     <Compile Include="MessageHandlers\MessageHandlerProcessor.cs" />
     <Compile Include="Model\Message.cs" />
-    <Compile Include="Model\MessageListener.cs" />
+    <Compile Include="Bus\MessageListener.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebApiModule.cs" />
   </ItemGroup>

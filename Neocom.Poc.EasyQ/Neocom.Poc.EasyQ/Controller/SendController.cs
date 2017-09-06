@@ -9,6 +9,7 @@ using EasyNetQ.NonGeneric;
 using EasyNetQ.Topology;
 using Neocom.Poc.EasyQ.App_Start;
 using Neocom.Poc.EasyQ.Model;
+using RabbitMQ.Client;
 
 namespace Neocom.Poc.EasyQ.Controller
 {
@@ -19,6 +20,46 @@ namespace Neocom.Poc.EasyQ.Controller
 
         public SendController()
         {
+        }
+
+        [Route("client")]
+        [HttpGet]
+        public async Task<HttpResponseMessage> BuildMessageWithRabbitClient()
+        {
+            var factory = new ConnectionFactory
+            {
+                HostName = "neogiglocal",
+                Port = 5672,
+                UserName = "guest",
+                Password = "guest",
+                VirtualHost = "/"
+            };
+
+            using (var connection = factory.CreateConnection())
+            using (var channel = connection.CreateModel())
+            {
+                channel.ExchangeDeclare(exchange: "test-exchange",
+                    type: "fanout",
+                    durable: true);
+
+                var message = "Current time: " + DateTime.Now.ToLongTimeString();
+                var body = Encoding.UTF8.GetBytes(message);
+
+                channel.BasicPublish(exchange: "test-exchange",
+                    routingKey: "",
+                    basicProperties: null,
+                    body: body);
+            }
+
+            var result = new StringContent("All is good".SerializeToJsonLowerCase(), Encoding.UTF8, "application/json");
+            var response = new HttpResponseMessage
+            {
+                Content = result,
+                StatusCode = HttpStatusCode.OK
+            };
+
+            return response;
+
         }
 
         [Route("")]

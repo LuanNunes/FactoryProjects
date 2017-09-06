@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neocom.Poc.EasyQ", "Neocom.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neocom.Poc.EasyQ.Receiver", "Neocom.Poc.EasyQ.Receiver\Neocom.Poc.EasyQ.Receiver.csproj", "{D91C0292-F04D-47BC-92F1-47A3FFA281DC}"
 EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{47A8347E-E8D6-41CF-B054-E37E3CC755A9}"
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{45EF5A10-1B6D-4006-9049-A4FB74D4E871}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{D91C0292-F04D-47BC-92F1-47A3FFA281DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D91C0292-F04D-47BC-92F1-47A3FFA281DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D91C0292-F04D-47BC-92F1-47A3FFA281DC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{47A8347E-E8D6-41CF-B054-E37E3CC755A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{47A8347E-E8D6-41CF-B054-E37E3CC755A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{47A8347E-E8D6-41CF-B054-E37E3CC755A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{47A8347E-E8D6-41CF-B054-E37E3CC755A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45EF5A10-1B6D-4006-9049-A4FB74D4E871}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45EF5A10-1B6D-4006-9049-A4FB74D4E871}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45EF5A10-1B6D-4006-9049-A4FB74D4E871}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45EF5A10-1B6D-4006-9049-A4FB74D4E871}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

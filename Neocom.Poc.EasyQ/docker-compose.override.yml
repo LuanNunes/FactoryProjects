@@ -4,7 +4,11 @@ services:
   neocom.poc.easyq:
     ports:
       - "80"
+  neocom.poc.easyq.receiver:
+    ports:
+      - "80"
 networks:
   default:
     external:
       name: nat
+

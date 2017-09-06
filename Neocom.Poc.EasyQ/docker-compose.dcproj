@@ -3,7 +3,7 @@
   <PropertyGroup Label="Globals">
     <ProjectVersion>2.0</ProjectVersion>
     <DockerTargetOS>Windows</DockerTargetOS>
-    <ProjectGuid>47a8347e-e8d6-41cf-b054-e37e3cc755a9</ProjectGuid>
+    <ProjectGuid>45ef5a10-1b6d-4006-9049-a4fb74d4e871</ProjectGuid>
     <DockerLaunchBrowser>True</DockerLaunchBrowser>
     <DockerServiceUrl>http://{ServiceIPAddress}</DockerServiceUrl>
     <DockerServiceName>neocom.poc.easyq</DockerServiceName>

@@ -6,3 +6,9 @@ services:
     build:
       context: .\Neocom.Poc.EasyQ
       dockerfile: Dockerfile
+
+  neocom.poc.easyq.receiver:
+    image: neocom.poc.easyq.receiver
+    build:
+      context: .\Neocom.Poc.EasyQ.Receiver
+      dockerfile: Dockerfile

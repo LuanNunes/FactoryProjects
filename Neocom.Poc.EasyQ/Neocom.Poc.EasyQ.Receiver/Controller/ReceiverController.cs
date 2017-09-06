@@ -12,9 +12,8 @@ namespace Neocom.Poc.EasyQ.Receiver.Controller
     {
         private readonly IBus _bus;
 
-        public ReceiverController(IBus bus)
+        public ReceiverController()
         {
-            this._bus = bus;
         }
 
         [Route("")]
