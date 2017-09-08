@@ -26,10 +26,9 @@ namespace Neocom.Poc.EasyQ
             var customAssemblies = assms.ToList();
             var self = Assembly.Load("Neocom.Poc.EasyQ");
             customAssemblies.Add(self);
+            //container.RegisterAsEasyNetQContainerFactory();
 
             InitializeContainer(container, customAssemblies);
-
-            container.RegisterAsEasyNetQContainerFactory();
 
             //container.Register(() =>
             //{

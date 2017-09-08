@@ -18,14 +18,27 @@ namespace Neocom.Poc.EasyQ.Controller
     {
         private readonly IBus _bus;
 
-        public SendController()
+        public SendController(IBus bus)
         {
+            _bus = bus;
         }
 
         [Route("client")]
         [HttpGet]
         public async Task<HttpResponseMessage> BuildMessageWithRabbitClient()
         {
+            
+
+            var msg = new {Text = "I'm here motherfuck!"};
+            var msg2 = new EasyNetQ.Message<dynamic>(msg);
+
+            _bus.Publish(new Message
+            {
+                Text = "I'm here motherfuck!"
+            });
+
+
+
             var factory = new ConnectionFactory
             {
                 HostName = "neogiglocal",
@@ -62,50 +75,50 @@ namespace Neocom.Poc.EasyQ.Controller
 
         }
 
-        [Route("")]
-        [HttpGet]
-        public async Task<HttpResponseMessage> BuildMessage()
-        {
-            var msg = new Message {Value = "Hello Rabbit!"};
+        //[Route("")]
+        //[HttpGet]
+        //public async Task<HttpResponseMessage> BuildMessage()
+        //{
+        //    var msg = new Message {Value = "Hello Rabbit!"};
 
-            var serviceBus = RabbitHutch.CreateBus("host=localhost;virtualHost=/;username=guest;password=guest");
-            var adBus = RabbitHutch.CreateBus("host=localhost;virtualHost=/;username=guest;password=guest").Advanced;
-            adBus.QueueDeclare("my_queue");
+        //    var serviceBus = RabbitHutch.CreateBus("host=localhost;virtualHost=/;username=guest;password=guest");
+        //    var adBus = RabbitHutch.CreateBus("host=localhost;virtualHost=/;username=guest;password=guest").Advanced;
+        //    adBus.QueueDeclare("my_queue");
 
-            var properties = new MessageProperties();
-            var body = Encoding.UTF8.GetBytes("Hello World!");
+        //    var properties = new MessageProperties();
+        //    var body = Encoding.UTF8.GetBytes("Hello World!");
 
-            var myMessage = new EasyNetQ.Message<Neocom.Poc.EasyQ.Model.Message>(msg);
+        //    var myMessage = new EasyNetQ.Message<Neocom.Poc.EasyQ.Model.Message>(msg);
 
-            serviceBus.Publish(Exchange.GetDefault(), "my_queue");
+        //    serviceBus.Publish(Exchange.GetDefault(), "my_queue");
             
 
-            //serviceBus.Publish(msg);
+        //    //serviceBus.Publish(msg);
 
-            await serviceBus.PublishAsync(new Message
-            {
-                Value = "Hello Rabbit!"
-            }).ContinueWith(task =>
-            {
-                if (task.IsCompleted)
-                    Console.Out.WriteLine("{0} Completed", 0);
+        //    await serviceBus.PublishAsync(new Message
+        //    {
+        //        Value = "Hello Rabbit!"
+        //    }).ContinueWith(task =>
+        //    {
+        //        if (task.IsCompleted)
+        //            Console.Out.WriteLine("{0} Completed", 0);
 
-                if (task.IsFaulted)
-                {
-                    Console.Out.WriteLine("\n\n");
-                    Console.Out.WriteLine(task.Exception);
-                    Console.Out.WriteLine("\n\n");
-                }
-            });
+        //        if (task.IsFaulted)
+        //        {
+        //            Console.Out.WriteLine("\n\n");
+        //            Console.Out.WriteLine(task.Exception);
+        //            Console.Out.WriteLine("\n\n");
+        //        }
+        //    });
 
-            var result = new StringContent("All is good".SerializeToJsonLowerCase(), Encoding.UTF8, "application/json");
-            var response = new HttpResponseMessage
-            {
-                Content = result,
-                StatusCode = HttpStatusCode.OK
-            };
+        //    var result = new StringContent("All is good".SerializeToJsonLowerCase(), Encoding.UTF8, "application/json");
+        //    var response = new HttpResponseMessage
+        //    {
+        //        Content = result,
+        //        StatusCode = HttpStatusCode.OK
+        //    };
 
-            return response;
-        }
+        //    return response;
+        //}
     }
 }

@@ -50,6 +50,9 @@
     <Reference Include="EasyNetQ.DI.SimpleInjector, Version=2.0.4.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\EasyNetQ.DI.SimpleInjector.2.1.0\lib\net451\EasyNetQ.DI.SimpleInjector.dll</HintPath>
     </Reference>
+    <Reference Include="EasyNetQ.Management.Client, Version=0.51.3.116, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EasyNetQ.Management.Client.0.51.3.116\lib\net40\EasyNetQ.Management.Client.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.5\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>

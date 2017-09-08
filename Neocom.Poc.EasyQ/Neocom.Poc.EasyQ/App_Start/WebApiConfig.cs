@@ -10,7 +10,7 @@ namespace Neocom.Poc.EasyQ.App_Start
     {
         public static void Register(HttpConfiguration config)
         {
-            //SimpleInjectorInitializer.Initialize();
+            SimpleInjectorInitializer.Initialize();
 
             var enabledOrigin = new EnableCorsAttribute(ConfigurationManager.AppSettings["EnabledOrigin"], "*", "*", "*");
 
